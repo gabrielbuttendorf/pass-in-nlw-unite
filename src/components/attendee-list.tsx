@@ -1,4 +1,9 @@
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, MoreHorizontal, Search } from "lucide-react"
+import { IconButton } from "./icon-button"
+import { Table } from "./table/table"
+import { TableHeader } from "./table/table-header"
+import { TableCell } from "./table/table-cell"
+import { TableRow } from "./table/table-row"
 
 export function AttendeeList() {
   return (
@@ -11,74 +16,70 @@ export function AttendeeList() {
         </div>
       </div>
 
-      <div className="border border-white/10 rounded-lg">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-white/10">
-              <th style={{ width: 48 }} className="px-4 py-3 text-sm font-semibold text-left">
-                <input type="checkbox" className="size-4 bg-black/20 rounded border border-white/10 acc" />
-              </th>
-              <th className="px-4 py-3 text-sm font-semibold text-left">Código</th>
-              <th className="px-4 py-3 text-sm font-semibold text-left">Participante</th>
-              <th className="px-4 py-3 text-sm font-semibold text-left">Data da inscrição</th>
-              <th className="px-4 py-3 text-sm font-semibold text-left">Data do check-in</th>
-              <th style={{ width: 64 }} className="px-4 py-3 text-sm font-semibold text-left"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.from({ length: 6 }).map((_, index) => {
-              return (
-                <tr key={index} className="border-b border-white/10">
-                  <td className="px-4 py-3 text-sm text-zinc-300">
-                    <input type="checkbox" className="size-4 bg-black/20 rounded border border-white/10 acc" />
-                  </td>
-                  <td className="px-4 py-3 text-sm text-zinc-300">123456</td>
-                  <td className="px-4 py-3 text-sm text-zinc-300">
-                    <div className="flex flex-col gap-1">
-                      <span className="font-semibold text-white">Gabriel Felipe Buttendorf</span>
-                      <span>gabrielbuttendorf@gmail.com</span>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-sm text-zinc-300">7 dias atrás</td>
-                  <td className="px-4 py-3 text-sm text-zinc-300">3 dias atrás</td>
-                  <td className="px-4 py-3 text-sm text-zinc-300">
-                    <button className="bg-black/20 border border-white/10 rounded-md p-1.5">
-                      <MoreHorizontal className="size-4" />
-                    </button>
-                  </td>
-              </tr>
-              )
-            })}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td className="px-4 py-3 text-sm text-zinc-300" colSpan={3}>
-                Mostrando 10 de 228 itens
-              </td>
-              <td className="px-4 py-3 text-sm text-zinc-300 text-right" colSpan={3}>
-                <div className="inline-flex items-center gap-8">
-                  <span>Página 1 de 11</span>
-                  <div className="flex gap-1.5">
-                    <button className="bg-white/10 border border-white/10 rounded-md p-1.5">
-                      <ChevronsLeft className="size-4" />
-                    </button>
-                    <button className="bg-white/10 border border-white/10 rounded-md p-1.5">
-                      <ChevronLeft className="size-4" />
-                    </button>
-                    <button className="bg-white/10 border border-white/10 rounded-md p-1.5">
-                      <ChevronRight className="size-4" />
-                    </button>
-                    <button className="bg-white/10 border border-white/10 rounded-md p-1.5">
-                      <ChevronsRight className="size-4" />
-                    </button>
+      <Table>
+        <thead>
+          <TableRow>
+            <TableHeader style={{ width: 48 }}></TableHeader>
+            <TableHeader>Código</TableHeader>
+            <TableHeader>Participante</TableHeader>
+            <TableHeader>Data da inscrição</TableHeader>
+            <TableHeader>Data do check-in</TableHeader>
+            <TableHeader style={{ width: 64 }}></TableHeader>
+          </TableRow>
+        </thead>
+        <tbody>
+          {Array.from({ length: 6 }).map((_, index) => {
+            return (
+              <TableRow key={index}>
+                <TableCell>
+                  <input type="checkbox" className="size-4 bg-black/20 rounded border border-white/10 acc" />
+                </TableCell>
+                <TableCell>123456</TableCell>
+                <TableCell>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-white">Gabriel Felipe Buttendorf</span>
+                    <span>gabrielbuttendorf@gmail.com</span>
                   </div>
+                </TableCell>
+                <TableCell>7 dias atrás</TableCell>
+                <TableCell>3 dias atrás</TableCell>
+                <TableCell>
+                  <IconButton transparent>
+                    <MoreHorizontal className="size-4" />
+                  </IconButton>
+                </TableCell>
+            </TableRow>
+            )
+          })}
+        </tbody>
+        <tfoot>
+          <tr>
+            <TableCell colSpan={3}>
+              Mostrando 10 de 228 itens
+            </TableCell>
+            <TableCell className="text-right" colSpan={3}>
+              <div className="inline-flex items-center gap-8">
+                <span>Página 1 de 11</span>
+                <div className="flex gap-1.5">
+                  <IconButton>
+                    <ChevronsLeft className="size-4" />
+                  </IconButton>
+                  <IconButton>
+                    <ChevronLeft className="size-4" />
+                  </IconButton>
+                  <IconButton>
+                    <ChevronRight className="size-4" />
+                  </IconButton>
+                  <IconButton>
+                    <ChevronsRight className="size-4" />
+                  </IconButton>
                 </div>
-              </td>
+              </div>
+            </TableCell>
 
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+          </tr>
+        </tfoot>
+      </Table>
     </div>
   )
 }
