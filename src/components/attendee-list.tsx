@@ -134,7 +134,7 @@ export function AttendeeList() {
             return (
               <TableRow key={attendee.id} className="hover:bg-white/10">
                 <TableCell>
-                  <input type="checkbox" className="size-4 bg-black/20 rounded border border-white/10 acc" />
+                  <input type="checkbox" className="size-4 bg-black/20 rounded border text-orange-400 focus-ring-1 focus:ring-orange-200 focus:ring-offset-0 focus:border-0" />
                 </TableCell>
                 <TableCell>{attendee.id}</TableCell>
                 <TableCell>
